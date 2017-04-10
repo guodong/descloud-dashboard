@@ -23,11 +23,11 @@ export class DesktopsViewComponent implements OnInit {
     var me = this;
     this.desktop = new Desktop('', '');
     var id = this.route.snapshot.params['id'];
-    
+
     setTimeout(function () {
       var dom_left = document.getElementById('canvas').offsetLeft;
       if (dom_left != 0) {
-        this.isfullscreen = false;
+        me.isfullscreen = false;
       }
     },1000);
     this.apiService.getDesktopInfo(id).subscribe(
