@@ -24,7 +24,7 @@ export class DesktopsViewComponent implements OnInit {
     this.desktop = new Desktop('', '');
     var id = this.route.snapshot.params['id'];
 
-    setTimeout(function () {
+    setInterval(function () {
       var dom_left = document.getElementById('canvas').offsetLeft;
       if (dom_left != 0) {
         me.isfullscreen = false;
@@ -46,7 +46,6 @@ export class DesktopsViewComponent implements OnInit {
               var dom_top = document.getElementById('canvas').offsetTop;
               var scroll_top = document.getElementsByClassName('wrapper')[0].scrollTop;
               if (me.isfullscreen) {
-                console.log('fs');
                 dom_left = 0;
                 dom_top = 0;
                 scroll_top = 0;
