@@ -72,7 +72,7 @@ export class DesktopsViewComponent implements OnInit {
                 e.preventDefault(); // stops its action
               }
               if (e.keyCode == 27) { // exit fullscreen
-                me.fullscreen = false;
+                me.isfullscreen = false;
               }
               var buf = new ArrayBuffer(5);
               var dv = new DataView(buf);
