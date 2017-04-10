@@ -12,7 +12,7 @@ export class DesktopsViewComponent implements OnInit {
 
   desktop: Desktop;
   ws: any;
-  fullscreen: boolean = false;
+  isfullscreen: boolean = false;
 
   constructor(private apiService: ApiService,
               private router: Router,
@@ -38,7 +38,7 @@ export class DesktopsViewComponent implements OnInit {
               var dom_left = document.getElementById('canvas').offsetLeft;
               var dom_top = document.getElementById('canvas').offsetTop;
               var scroll_top = document.getElementsByClassName('wrapper')[0].scrollTop;
-              if (me.fullscreen) {
+              if (me.isfullscreen) {
                 dom_left = 0;
                 dom_top = 0;
                 scroll_top = 0;
@@ -130,7 +130,7 @@ export class DesktopsViewComponent implements OnInit {
     } else if (docElm.webkitRequestFullScreen) {
       canvas.webkitRequestFullScreen();
     }
-    this.fullscreen = true;
+    this.isfullscreen = true;
   }
 
   snapshot() {
