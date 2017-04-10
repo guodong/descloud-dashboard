@@ -23,6 +23,20 @@ export class DesktopsViewComponent implements OnInit {
     var me = this;
     this.desktop = new Desktop('', '');
     var id = this.route.snapshot.params['id'];
+    if (document.addEventListener) {
+      document.addEventListener('webkitfullscreenchange', exitHandler, false);
+      document.addEventListener('mozfullscreenchange', exitHandler, false);
+      document.addEventListener('fullscreenchange', exitHandler, false);
+      document.addEventListener('MSFullscreenChange', exitHandler, false);
+    }
+
+    function exitHandler() {
+      if (document.webkitIsFullScreen !== null) {
+        me.isfullscreen = false;
+        document.removeEventListener('webkitfullscreenchange');
+        document.removeEventListener('fullscreenchange');
+      }
+    }
     this.apiService.getDesktopInfo(id).subscribe(
       resp => {
         this.desktop = resp;
@@ -39,6 +53,7 @@ export class DesktopsViewComponent implements OnInit {
               var dom_top = document.getElementById('canvas').offsetTop;
               var scroll_top = document.getElementsByClassName('wrapper')[0].scrollTop;
               if (me.isfullscreen) {
+                console.log('fs');
                 dom_left = 0;
                 dom_top = 0;
                 scroll_top = 0;
@@ -130,20 +145,6 @@ export class DesktopsViewComponent implements OnInit {
       canvas.webkitRequestFullScreen();
     }
     this.isfullscreen = true;
-    if (document.addEventListener) {
-      document.addEventListener('webkitfullscreenchange', exitHandler, false);
-      document.addEventListener('mozfullscreenchange', exitHandler, false);
-      document.addEventListener('fullscreenchange', exitHandler, false);
-      document.addEventListener('MSFullscreenChange', exitHandler, false);
-    }
-
-    function exitHandler() {
-      if (document.webkitIsFullScreen !== null) {
-        me.isfullscreen = false;
-        document.removeEventListener('webkitfullscreenchange');
-        document.removeEventListener('fullscreenchange');
-      }
-    }
   }
 
   snapshot() {
