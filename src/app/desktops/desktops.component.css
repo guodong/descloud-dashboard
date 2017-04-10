@@ -1,0 +1,46 @@
+/*h3 {*/
+  /*line-height: 50px;*/
+/*}*/
+/*.box {*/
+  /*width: 300px;*/
+  /*height: 270px;*/
+  /*border: 1px solid #000;*/
+  /*margin: 0 20px 20px 0;*/
+  /*float: left;*/
+  /*background: #fff;*/
+  /*border: 1px solid #dbd8d8;*/
+/*}*/
+/*.box .title {*/
+  /*padding: 12px 15px;*/
+  /*border-bottom: 1px solid #dbd8d8;*/
+  /*font-weight: bold;*/
+/*}*/
+/*.box .title i {*/
+  /*font-size: 16px;*/
+/*}*/
+/*.box img {*/
+  /*max-width: 260px;*/
+  /*margin: 0 auto;*/
+  /*margin-top: 5px;*/
+  /*display: block;*/
+  /*max-height: 170px;*/
+/*}*/
+/*.box .info {*/
+  /*background: #f7f7f7;*/
+  /*padding: 10px 15px;*/
+  /*font-size: 12px;*/
+/*}*/
+/*.box .btn {*/
+  /*width: 100%;*/
+/*}*/
+.box {
+  max-width: 270px;
+}
+.box.add {
+  text-align: center;
+  height: 270px;
+}
+.box.add .icon {
+  font-size: 48px;
+  margin-top: 50px;
+}

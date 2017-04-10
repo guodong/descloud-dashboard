@@ -1,0 +1,52 @@
+<section class="content-header">
+  <h1>
+    Desktop Service
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Dashboard</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="callout callout-info">
+    <h4>Notice!</h4>
+    Each user has quota of <b>2</b> desktops.<br>
+    DesCloud is in alpha, your desktops will be destroyed in <b>24</b> hours, do not use for production.
+  </div>
+  <alert type="danger" dismissible="true" *ngIf="noQuota">
+    <strong>No quota!</strong> You have quota of <b>2</b> desktops, you can remove unused desktops to make room.
+  </alert>
+  <div class="row">
+    <div class="col-lg-3 col-xs-6" *ngFor="let desktop of desktops">
+      <div class="box box-default" style="height: 270px;">
+        <div class="box-header with-border">
+          <h3 class="box-title">{{desktop.name}}</h3>
+          <div class="box-tools pull-right">
+            <!--<button [routerLink]="['/desktops/stats', desktop._id]" type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-area-chart"></i></button>-->
+            <button (click)="removeDesktop(desktop)" type="button" class="btn btn-box-tool" data-widget="remove" title="destroy desktop"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+          <img class="rounded img-responsive" src="assets/images/screen.png" >
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+          <button (click)="openDesktop(desktop)" type="button" class="btn btn-success" style="width: 100%;">Open Desktop</button>
+        </div>
+        <!-- /.footer -->
+      </div>
+    </div>
+    <div class="col-lg-3 col-xs-6">
+      <div class="box box-default add">
+        <!-- /.box-header -->
+        <div class="box-body">
+          <a href="javascript:;" (click)="createDesktop()">
+            <div class="icon"><i class="fa fa-plus"></i></div>
+            <div class="info">Create New Desktop</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

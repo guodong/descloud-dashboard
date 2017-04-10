@@ -1,0 +1,15 @@
+<section class="content-header">
+  <h1>
+    <a (click)="goback()" class="fa fa-arrow-left"></a> {{desktop.name}}
+  </h1>
+</section>
+<section class="content">
+  <a (click)="fullscreen()" class="btn btn-app">
+    <i class="fa fa-arrows-alt"></i> Fullscreen
+  </a>
+  <a (click)="snapshot()" id="snapshot" download="snapshot.png" class="btn btn-app">
+    <i class="fa fa-save"></i> Snapshot
+  </a>
+  <canvas id="canvas" width="1440px" height="900px" style="width: 100%;"></canvas>
+</section>
+

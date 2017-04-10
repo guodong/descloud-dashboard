@@ -1,0 +1,32 @@
+.page-header {
+  margin: 0;
+}
+.page-header .fa {
+  margin-right: 10px;
+}
+.setting-section {
+  padding: 20px;
+  width: 100%;
+  border-bottom: 1px solid #e6e9ed;
+  float: left;
+  font-size: 14px;
+}
+.setting-section .setting-label {
+  margin-top: 0;
+  float: left;
+  font-weight: 700;
+}
+.setting-section .setting-info {
+  margin-left: 160px;
+  vertical-align: top;
+}
+.checkbox-group li, .radio-group li {
+  float: left;
+  margin-right: 10px;
+  width: 160px;
+}
+.checkbox-group li label, .radio-group li label {
+  display: inline-block;
+  padding-right: 80px;
+  padding-left: 20px;
+}

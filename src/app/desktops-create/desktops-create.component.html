@@ -1,0 +1,76 @@
+<section class="content-header">
+  <h1>
+    <a routerLink="/desktops" class="fa fa-arrow-left"></a> Create Desktop
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Dashboard</li>
+  </ol>
+</section>
+<section class="content">
+  <div class="panel panel-default top-margin-20">
+    <div class="panel-body">
+      <form>
+        <div class="setting-section">
+          <div class="col-md-10 col-lg-10"><label class="setting-label">Desktop Name</label>
+            <div class="setting-info"><input class="form-control" [(ngModel)]="model.name" name="name"
+                                             placeholder="eg. my desktop" tabindex="0">
+            </div>
+          </div>
+        </div>
+        <div class="setting-section">
+          <div class="col-md-10 col-lg-10"><label class="setting-label">Desktop Type</label>
+            <div class="setting-info">
+              <ul class="radio-group">
+                <li>
+                  <div class="radio"><label><input type="radio" name="desktop_type" checked="checked" value="xfce4">Xfce4</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio"><label><input type="radio" name="desktop_type" disabled="disabled" value="gnome">Gnome</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="setting-section">
+          <div class="col-md-10 col-lg-10"><label class="setting-label">CPU Num</label>
+            <div class="setting-info">
+              <ul class="radio-group">
+                <li>
+                  <div class="radio"><label><input type="radio" name="cpus" checked="checked" value="xfce4">1</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio"><label><input type="radio" name="cpus" disabled="disabled" value="gnome">2</label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="setting-section">
+          <div class="col-md-10 col-lg-10"><label class="setting-label">Memory</label>
+            <div class="setting-info">
+              <ul class="radio-group">
+                <li>
+                  <div class="radio"><label><input type="radio" name="memory" checked="checked" value="xfce4">512M</label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio"><label><input type="radio" name="memory" disabled="disabled"
+                                                   value="gnome">1024M</label></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="setting-section">
+          <button *ngIf="loading" class="btn btn-lg btn-block btn-default" disabled="disabled">Loading...</button>
+          <button *ngIf="!loading" class="btn btn-lg btn-block btn-success" (click)="submit()">Create Desktop</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

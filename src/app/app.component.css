@@ -1,0 +1,62 @@
+
+/*.sidebar {*/
+  /*width: 20%;*/
+  /*background: #222d32;*/
+  /*color: #fff;*/
+  /*flex: 1;*/
+  /*order: 1;*/
+/*}*/
+/*.logo {*/
+  /*color: #ffffff;*/
+  /*font-size: 18px;*/
+  /*text-align: center;*/
+  /*padding: 15px 0;*/
+  /*margin-bottom: 60px;*/
+  /*background: #25282d;*/
+  /*height: 60px;*/
+/*}*/
+/*.menu>li>a {*/
+  /*border-left: 3px solid transparent;*/
+  /*padding: 12px 5px 12px 15px;*/
+  /*display: block;*/
+  /*font-size: 14px;*/
+  /*color: #fff;*/
+/*}*/
+/*.menu>li:hover>a, .menu>li.active>a {*/
+  /*border-left-color: #3c8dbc;*/
+  /*background: #2e383c;*/
+/*}*/
+
+/*.main-container {*/
+  /*font-size: 12px;*/
+  /*background: #ededed;*/
+  /*color: #333;*/
+  /*height: 100%;*/
+  /*order: 2;*/
+  /*width: 80%;*/
+/*}*/
+/*.header {*/
+  /*height: 60px;*/
+  /*background: #fff;*/
+  /*border-bottom: 1px solid #e4e7ed;*/
+  /*margin-bottom: 20px;*/
+/*}*/
+/*.header .tool {*/
+  /*width: 150px;*/
+  /*float: right;*/
+  /*padding-top: 10px;*/
+  /*border-left: 1px solid #eee;*/
+  /*height: 100%;*/
+  /*padding-left: 15px;*/
+/*}*/
+/*.header .tool img {*/
+  /*width: 36px;*/
+  /*height: 36px;*/
+  /*border-radius: 50%;*/
+  /*margin-right: 15px;*/
+/*}*/
+/*.des-container {*/
+  /*padding-left: 40px;*/
+  /*padding-right: 40px;*/
+  /*padding-bottom: 20px;*/
+/*}*/

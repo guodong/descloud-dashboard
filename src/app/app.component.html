@@ -1,3 +1,84 @@
-<h1>
-  {{title}}
-</h1>
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="/" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>D</b>C</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Des</b>Cloud</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="javascript:;" (click)="toggleSidebar()" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account: style can be found in dropdown.less -->
+          <li class="dropdown user user-menu">
+            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="{{user.avatar}}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{user.username}}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{{user.avatar}}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>{{user.username}}</p>
+        </div>
+      </div>
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class="active">
+          <a href="desktops">
+            <i class="fa fa-laptop"></i> <span>Desktop Service</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="http://cloudwarehub.com" target="_blank">
+            <i class="fa fa-building"></i> <span>Cloudware Service</span>
+          </a>
+        </li>
+        <li class="">
+          <a href="http://descloud.io" (click)="signout()">
+            <i class="fa fa-sign-out"></i> <span>Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+
+    <router-outlet></router-outlet>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 0.0.1
+    </div>
+    <strong>Copyright &copy; 2017 <a href="http://cloudwarehub.com">CloudwareLabs</a>.</strong> All rights
+    reserved.
+  </footer>
+
+</div>
+<!-- ./wrapper -->
+
+
