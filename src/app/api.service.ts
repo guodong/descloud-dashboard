@@ -7,7 +7,7 @@ import {Desktop} from "./desktop";
 
 @Injectable()
 export class ApiService {
-  apiUrl = 'http://localhost:3000';
+  apiUrl = 'http://106.75.85.74:3000';
 
   constructor(private http: Http) {
   }
@@ -42,7 +42,7 @@ export class ApiService {
       .map(this.extractData)
       .catch(this.handleError);
   }
-  
+
   removeDesktop(desktop: Desktop): Observable<any> {
     let headers = new Headers({ 'Authorization': 'bearer ' + localStorage.getItem('token') });
     let options = new RequestOptions({ headers: headers });
@@ -50,9 +50,9 @@ export class ApiService {
     return this.http.delete(this.apiUrl + '/desktops/' + desktop._id, options)
       .map(this.extractData)
       .catch(this.handleError);
-    
+
   }
-  
+
   getDesktopInfo(id: string): Observable<any> {
     let headers = new Headers({ 'Authorization': 'bearer ' + localStorage.getItem('token') });
     let options = new RequestOptions({ headers: headers });
@@ -61,7 +61,7 @@ export class ApiService {
       .map(this.extractData)
       .catch(this.handleError);
   }
-  
+
   getStatsInfo(desktop: Desktop): Observable<any> {
     let headers = new Headers({ 'Authorization': 'bearer ' + localStorage.getItem('token') });
     let options = new RequestOptions({ headers: headers });
