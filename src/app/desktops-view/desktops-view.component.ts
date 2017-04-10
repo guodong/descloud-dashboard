@@ -12,6 +12,7 @@ export class DesktopsViewComponent implements OnInit {
 
   desktop: Desktop;
   ws: any;
+  fullscreen: boolean = false;
 
   constructor(private apiService: ApiService,
               private router: Router,
@@ -36,9 +37,15 @@ export class DesktopsViewComponent implements OnInit {
             canvas.onmousemove = function (e) {
               var dom_left = document.getElementById('canvas').offsetLeft;
               var dom_top = document.getElementById('canvas').offsetTop;
+              var scroll_top = document.getElementsByClassName('wrapper')[0].scrollTop;
+              if (me.fullscreen) {
+                dom_left = 0;
+                dom_top = 0;
+                scroll_top = 0;
+              }
               var bei = document.getElementById('canvas').offsetWidth / 1440;
               var x = Math.floor((e.pageX - dom_left) / bei);
-              var y = Math.floor((e.pageY - dom_top + document.getElementsByClassName('wrapper')[0].scrollTop) / bei);
+              var y = Math.floor((e.pageY - dom_top + scroll_top) / bei);
               var buf = new ArrayBuffer(5);
               var dv = new DataView(buf);
               dv.setUint8(0, 0);
@@ -63,6 +70,9 @@ export class DesktopsViewComponent implements OnInit {
             document.onkeydown = function (e) {
               if (e.keyCode == 9 || e.keyCode == 32) {  //tab pressed
                 e.preventDefault(); // stops its action
+              }
+              if (e.keyCode == 27) { // exit fullscreen
+                me.fullscreen = false;
               }
               var buf = new ArrayBuffer(5);
               var dv = new DataView(buf);
@@ -120,6 +130,7 @@ export class DesktopsViewComponent implements OnInit {
     } else if (docElm.webkitRequestFullScreen) {
       canvas.webkitRequestFullScreen();
     }
+    this.fullscreen = true;
   }
 
   snapshot() {
