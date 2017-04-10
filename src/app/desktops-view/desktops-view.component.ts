@@ -140,6 +140,8 @@ export class DesktopsViewComponent implements OnInit {
     function exitHandler() {
       if (document.webkitIsFullScreen !== null) {
         me.isfullscreen = false;
+        document.removeEventListener('webkitfullscreenchange');
+        document.removeEventListener('fullscreenchange');
       }
     }
   }
