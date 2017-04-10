@@ -23,20 +23,13 @@ export class DesktopsViewComponent implements OnInit {
     var me = this;
     this.desktop = new Desktop('', '');
     var id = this.route.snapshot.params['id'];
-    if (document.addEventListener) {
-      document.addEventListener('webkitfullscreenchange', exitHandler, false);
-      document.addEventListener('mozfullscreenchange', exitHandler, false);
-      document.addEventListener('fullscreenchange', exitHandler, false);
-      document.addEventListener('MSFullscreenChange', exitHandler, false);
-    }
-
-    function exitHandler() {
-      if (document.webkitIsFullScreen !== null) {
-        me.isfullscreen = false;
-        document.removeEventListener('webkitfullscreenchange');
-        document.removeEventListener('fullscreenchange');
+    
+    setTimeout(function () {
+      var dom_left = document.getElementById('canvas').offsetLeft;
+      if (dom_left != 0) {
+        this.isfullscreen = false;
       }
-    }
+    },1000);
     this.apiService.getDesktopInfo(id).subscribe(
       resp => {
         this.desktop = resp;
