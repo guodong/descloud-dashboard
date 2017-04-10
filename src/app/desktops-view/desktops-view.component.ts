@@ -71,9 +71,6 @@ export class DesktopsViewComponent implements OnInit {
               if (e.keyCode == 9 || e.keyCode == 32) {  //tab pressed
                 e.preventDefault(); // stops its action
               }
-              if (e.keyCode == 27) { // exit fullscreen
-                me.isfullscreen = false;
-              }
               var buf = new ArrayBuffer(5);
               var dv = new DataView(buf);
               dv.setUint8(0, 3);
@@ -111,6 +108,7 @@ export class DesktopsViewComponent implements OnInit {
             img.src = url;
           };
         }
+
         runClient(this.desktop.port);
 
       }
@@ -123,6 +121,7 @@ export class DesktopsViewComponent implements OnInit {
   }
 
   fullscreen() {
+    var me = this;
     var canvas = document.getElementById('canvas');
     var docElm = document.documentElement;
     if (docElm.requestFullscreen) {
@@ -131,6 +130,18 @@ export class DesktopsViewComponent implements OnInit {
       canvas.webkitRequestFullScreen();
     }
     this.isfullscreen = true;
+    if (document.addEventListener) {
+      document.addEventListener('webkitfullscreenchange', exitHandler, false);
+      document.addEventListener('mozfullscreenchange', exitHandler, false);
+      document.addEventListener('fullscreenchange', exitHandler, false);
+      document.addEventListener('MSFullscreenChange', exitHandler, false);
+    }
+
+    function exitHandler() {
+      if (document.webkitIsFullScreen !== null) {
+        me.isfullscreen = false;
+      }
+    }
   }
 
   snapshot() {
