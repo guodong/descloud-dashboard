@@ -18,13 +18,15 @@ export class AppComponent {
 
   ngOnInit() {
     var me = this;
-    this.apiService.getUserInfo().subscribe(
-      resp => {
-        console.log(resp)
-        me.user = resp;
-      },
-      err => me.err = <any>err
-    );
+    if (location.pathname != '/auth_callback_github') {
+      this.apiService.getUserInfo().subscribe(
+        resp => {
+          console.log(resp)
+          me.user = resp;
+        },
+        err => me.err = <any>err
+      );
+    }
   }
 
   toggleSidebar() {
