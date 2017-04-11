@@ -809,7 +809,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ApiService = (function () {
     function ApiService(http) {
         this.http = http;
-        this.apiUrl = 'http://106.75.85.74:3000';
+        this.apiUrl = 'http://api.descloud.io';
     }
     ApiService.prototype.getUserInfo = function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Headers */]({ 'Authorization': 'bearer ' + localStorage.getItem('token') });
@@ -864,6 +864,10 @@ var ApiService = (function () {
     };
     ApiService.prototype.handleError = function (error) {
         // In a real world app, you might use a remote logging infrastructure
+        if (error.status === 401) {
+            location.replace('http://descloud.io');
+            return;
+        }
         var errMsg;
         if (error instanceof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Response */]) {
             var body = error.json() || '';

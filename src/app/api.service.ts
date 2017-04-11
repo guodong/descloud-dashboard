@@ -7,7 +7,7 @@ import {Desktop} from "./desktop";
 
 @Injectable()
 export class ApiService {
-  apiUrl = 'http://106.75.85.74:3000';
+  apiUrl = 'http://api.descloud.io';
 
   constructor(private http: Http) {
   }
@@ -77,6 +77,10 @@ export class ApiService {
   }
   private handleError (error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure
+    if (error.status === 401) {
+      location.replace('http://descloud.io');
+      return;
+    }
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
