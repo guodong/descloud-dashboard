@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {ApiService} from "./api.service";
 import {UiService} from "./ui.service";
+import {User} from "./user";
 
 @Component({
   selector: 'body',
@@ -10,7 +11,7 @@ import {UiService} from "./ui.service";
 export class AppComponent {
   title = 'app works!';
   err = '';
-  user = {};
+  user: User = new User;
   collapse = false;
 
   constructor(private apiService: ApiService, private uiService: UiService) { }
@@ -29,5 +30,9 @@ export class AppComponent {
   toggleSidebar() {
     this.uiService.toggleSidebar();
   }
-  
+
+  signout() {
+    localStorage.removeItem('token');
+    location.replace('http://descloud.io');
+  }
 }
