@@ -1,2 +1,2 @@
-FROM node:7-onbuild
-EXPOSE 4200
+FROM nginx
+COPY dist/* /usr/share/nginx/html
