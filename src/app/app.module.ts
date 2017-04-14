@@ -17,6 +17,7 @@ import { DesktopsViewComponent } from './desktops-view/desktops-view.component';
 import { DesktopsEditComponent } from './desktops-edit/desktops-edit.component';
 import { DesktopsStatsComponent } from './desktops-stats/desktops-stats.component';
 import { DesktopsDestroyModalComponent } from './desktops-destroy-modal/desktops-destroy-modal.component';
+import { DesktopsTerminalComponent } from './desktops-terminal/desktops-terminal.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/desktops', pathMatch: 'full'},
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   {path: 'desktops/create', component: DesktopsCreateComponent},
   {path: 'desktops/stats/:id', component: DesktopsStatsComponent},
   {path: 'desktops/view/:id', component: DesktopsViewComponent},
+  {path: 'desktops/:id/terminal', component: DesktopsTerminalComponent},
   {path: 'auth_callback_github', component: AuthCallbackComponent}
 ];
 
@@ -37,7 +39,8 @@ const appRoutes: Routes = [
     DesktopsViewComponent,
     DesktopsEditComponent,
     DesktopsStatsComponent,
-    DesktopsDestroyModalComponent
+    DesktopsDestroyModalComponent,
+    DesktopsTerminalComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

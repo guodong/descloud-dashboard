@@ -8,6 +8,7 @@ import {Desktop} from "./desktop";
 @Injectable()
 export class ApiService {
   apiUrl = 'http://api.descloud.io';
+  //apiUrl = 'http://localhost:3000';
 
   constructor(private http: Http) {
   }
@@ -71,12 +72,20 @@ export class ApiService {
       .catch(this.handleError);
   }
 
+  getTerminalToken(desktop: Desktop): Observable<any> {
+    let headers = new Headers({ 'Authorization': 'bearer ' + localStorage.getItem('token') });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.apiUrl + '/terminal/token/' + desktop._id, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body || {};
   }
   private handleError (error: Response | any) {
-    // In a real world app, you might use a remote logging infrastructure
     if (error.status === 401) {
       location.replace('http://descloud.io');
       return;

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import {ElementRef,Renderer2} from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import * as xterm from 'xterm';
 import {Desktop} from "../desktop";
 import {ApiService} from "../api.service";
 import {UiService} from "../ui.service";
@@ -16,6 +17,8 @@ export class DesktopsComponent implements OnInit {
   desktops: Desktop[];
   noQuota: boolean = false;
 
+  public term: xterm;
+  container: HTMLElement;
 
   constructor(
     private apiService: ApiService,
@@ -26,7 +29,7 @@ export class DesktopsComponent implements OnInit {
   ngOnInit() {
     this.apiService.getDesktops().subscribe(
       desktops => this.desktops = desktops
-    )
+    );
   }
 
   createDesktop() {

@@ -28,7 +28,10 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          <button (click)="openDesktop(desktop)" type="button" class="btn btn-success" style="width: 100%;">Open Desktop</button>
+          <div class="btn-group" style="width: 100%;">
+            <button (click)="openDesktop(desktop)" type="button" class="btn btn-success" style="width: 50%;"><i class="fa fa-laptop"></i> Desktop</button>
+            <button [routerLink]="['/desktops', desktop._id, 'terminal']" type="button" class="btn bg-navy" style="width: 50%;"><i class="fa fa-terminal"></i> Terminal</button>
+          </div>
         </div>
         <!-- /.footer -->
       </div>
