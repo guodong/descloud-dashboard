@@ -25,6 +25,10 @@ export class DesktopsViewComponent implements OnInit {
     var id = this.route.snapshot.params['id'];
 
     setInterval(function () {
+      var canvas = document.getElementById('canvas');
+      if (!canvas) {
+        return;
+      }
       var dom_left = document.getElementById('canvas').offsetLeft;
       if (dom_left != 0) {
         me.isfullscreen = false;
@@ -58,21 +62,24 @@ export class DesktopsViewComponent implements OnInit {
               dv.setUint8(0, 0);
               dv.setUint16(1, x, true);
               dv.setUint16(3, y, true);
-              ws.send(buf);
+              if (ws.readyState == 1)
+                ws.send(buf);
             };
             canvas.onmousedown = function (e) {
               var buf = new ArrayBuffer(5);
               var dv = new DataView(buf);
               dv.setUint8(0, 1);
               dv.setUint32(1, e.which, true);
-              ws.send(buf);
+              if (ws.readyState == 1)
+                ws.send(buf);
             };
             canvas.onmouseup = function (e) {
               var buf = new ArrayBuffer(5);
               var dv = new DataView(buf);
               dv.setUint8(0, 2);
               dv.setUint32(1, e.which, true);
-              ws.send(buf);
+              if (ws.readyState == 1)
+                ws.send(buf);
             };
             document.onkeydown = function (e) {
               if (e.keyCode == 9 || e.keyCode == 32) {  //tab pressed
@@ -82,7 +89,8 @@ export class DesktopsViewComponent implements OnInit {
               var dv = new DataView(buf);
               dv.setUint8(0, 3);
               dv.setUint32(1, me.mapKey(e.which), true);
-              ws.send(buf);
+              if (ws.readyState == 1)
+                ws.send(buf);
             };
             document.onkeyup = function (e) {
               if (e.keyCode == 9 || e.keyCode == 32) {  //tab pressed
@@ -92,7 +100,8 @@ export class DesktopsViewComponent implements OnInit {
               var dv = new DataView(buf);
               dv.setUint8(0, 4);
               dv.setUint32(1, me.mapKey(e.which), true);
-              ws.send(buf);
+              if (ws.readyState == 1)
+                ws.send(buf);
             };
           };
           ws.binaryType = "arraybuffer";
@@ -124,6 +133,12 @@ export class DesktopsViewComponent implements OnInit {
 
   goback() {
     this.ws.close();
+    document.onkeydown = function (e) {
+      return true;
+    };
+    document.onkeyup = function (e) {
+      return true;
+    };
     this.router.navigate(['/desktops']);
   }
 
