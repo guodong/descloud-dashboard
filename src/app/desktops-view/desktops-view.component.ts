@@ -50,8 +50,6 @@ export class DesktopsViewComponent implements OnInit {
               var dom_top = document.getElementById('canvas').offsetTop;
               var scroll_top = document.getElementsByClassName('wrapper')[0].scrollTop;
               if (me.isfullscreen) {
-                dom_left = 0;
-                dom_top = 0;
                 scroll_top = 0;
               }
               var bei = document.getElementById('canvas').offsetWidth / 1440;
